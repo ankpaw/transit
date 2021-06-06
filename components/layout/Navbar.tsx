@@ -58,15 +58,6 @@ const Navbar = (): JSX.Element => {
             </a>
           </Link>
         </div>
-        <div>
-          <a
-            href="/Ankit-Pawar.pdf"
-            target="_blank"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-blue-400 hover:text-blue-400 mt-4 lg:mt-0"
-          >
-            Resume
-          </a>
-        </div>
       </div>
     </nav>
   );
