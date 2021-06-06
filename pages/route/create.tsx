@@ -43,8 +43,8 @@ const Create = () => {
 
   const onAddRoute = (event: FormEvent) => {
     event.preventDefault();
-    let routes = JSON.parse(localStorage.getItem("routes") || "{}");
-    routes === null
+    let routes = JSON.parse(localStorage.getItem("routes") || "[]");
+    routes.length === 0
       ? (routes = [
           {
             name,

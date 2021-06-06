@@ -52,14 +52,9 @@ const Navbar = (): JSX.Element => {
               Create
             </a>
           </Link>
-          <Link href="/route/edit">
-            <a className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-blue-400 mr-4">
-              Edit
-            </a>
-          </Link>
-          <Link href="/contact">
+          <Link href="/routes/list">
             <a className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-blue-400">
-              Contact
+              List
             </a>
           </Link>
         </div>
