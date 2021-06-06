@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { IRoute } from "../../interfaces/IRoute";
 
 const List = () => {
-  const [routes, setroutes] = useState([]);
+  const [routes, setroutes] = useState<Array<IRoute>>();
   useEffect(() => {
-    setroutes(JSON.parse(localStorage.getItem("routes")), console.log(routes));
+    setroutes(JSON.parse(localStorage.getItem("routes") || "{}"));
   }, []);
   return (
     <div>

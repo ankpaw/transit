@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import StopForm from "../../components/common/StopForm";
+import { IStop } from "../../interfaces/IStop";
 const Create = () => {
   const [name, setname] = useState("");
   const [id, setid] = useState("");
   const [direction, setdirection] = useState("UP");
   const [status, setstatus] = useState("active");
-  const [stops, setstops] = useState([]);
+  const [stops, setstops] = useState<Array<IStop>>([]);
 
-  const removeStopHandler = (event: Event) => {
+  const removeStopHandler = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
-    setstops(stops.filter((stop) => stop.id !== event.target.value));
+    const { target } = event;
+    if (target) {
+      setstops(
+        stops.filter((stop) => stop.id !== (target as HTMLInputElement).value)
+      );
+    }
   };
 
   const renderStops = () => {
@@ -33,9 +41,9 @@ const Create = () => {
     );
   };
 
-  const onAddRoute = (event) => {
+  const onAddRoute = (event: FormEvent) => {
     event.preventDefault();
-    let routes = JSON.parse(localStorage.getItem("routes"));
+    let routes = JSON.parse(localStorage.getItem("routes") || "{}");
     routes === null
       ? (routes = [
           {

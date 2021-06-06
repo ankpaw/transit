@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-const StopForm = ({ onSubmit }) => {
+import { IStop } from "../../interfaces/IStop";
+type StopFormProps = {
+  onSubmit: (value: React.SetStateAction<Array<IStop>>) => void;
+};
+const StopForm = ({ onSubmit }: StopFormProps): JSX.Element => {
   const [name, setname] = useState("");
   const [id, setid] = useState("");
   const [latitude, setlatitude] = useState("");
   const [longitude, setlongitude] = useState("");
-  const onAddStop = (event) => {
+  const onAddStop = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
-    onSubmit((stops: Array<any>) => [
+    onSubmit((stops: Array<IStop>) => [
       ...stops,
       {
         name,

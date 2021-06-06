@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { IRoute } from "../../../interfaces/IRoute";
 const Edit = () => {
-  const [route, setroute] = useState();
-  const [routes, setroutes] = useState();
+  const [route, setroute] = useState<IRoute>();
+  const [routes, setroutes] = useState<Array<IRoute>>();
   const router = useRouter();
   const { routeId } = router.query;
   useEffect(() => {
-    setroutes(JSON.parse(localStorage.getItem("routes")));
+    setroutes(JSON.parse(localStorage.getItem("routes") || "{}"));
   }, []);
 
   useEffect(() => {
-    if (routes && routes.length > 0) {
-      setroute(
-        routes.filter((route) => route.id === routeId),
-        console.log(route)
-      );
+    if (routes) {
+      setroute(routes.filter((route) => route.id === routeId)[0]);
     }
   }, [routes]);
 
